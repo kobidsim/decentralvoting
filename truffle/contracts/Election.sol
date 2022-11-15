@@ -2,9 +2,9 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 
-contract CreateElection {
+/* contract CreateElection {
 
-}
+} */
 
 contract Election {
     struct VoterInfo{
@@ -22,7 +22,7 @@ contract Election {
     constructor (address _admin, address[] memory _voters) {
         admin = _admin;
         for(uint i=1; i<_voters.length; i++){
-            voters[_voters[i]] = VoterInfo(false, false);
+            voters[_voters[i]] = VoterInfo(false, false, false);
         }
     }
 
@@ -40,10 +40,10 @@ contract Election {
     }
 
     function addVoter(address _voter) public isAdmin {
-        voters[_voter] = VoterInfo(false,false);
+        voters[_voter] = VoterInfo(false,false,false);
     }
 
-    function vote(address _voter, address _candidate) public canVote {
+    function vote(address _voter, address _candidate) public canVote(_voter, _candidate) {
         voteCount[_candidate]++;
         voters[_voter].voted = true;
     }
@@ -55,3 +55,15 @@ contract Election {
         
     }
 }
+
+/* contract Test {
+    address user;
+
+    constructor (address _user) {
+        user = _user;
+    }
+
+    function getUser() public view returns(address){
+        return(user);
+    }
+} */
