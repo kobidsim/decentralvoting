@@ -2,9 +2,6 @@ const Election = artifacts.require("Election");
 
 contract("Election", ([admin, candidate, voter]) => {
     let election;
-    console.log("Admin: ", admin);
-    console.log("Candidate: ", candidate);
-    console.log("Voter: ", voter);
 
     before(async () => {
         election = await Election.deployed();

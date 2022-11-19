@@ -12,6 +12,8 @@ contract Election {
         bool isVerified;
         bool voted;
     }
+    //name of election
+    string electionName;
     //candidate => approvedOrNot
     mapping (address=>bool) candidates;
     address admin;
@@ -39,7 +41,8 @@ contract Election {
     );
 
 
-    constructor (address _admin, address[] memory _voters) {
+    constructor (string memory _name, address _admin, address[] memory _voters) {
+        electionName = _name;
         admin = _admin;
         for(uint i=1; i<_voters.length; i++){
             voters[_voters[i]] = VoterInfo(false, false, false);
