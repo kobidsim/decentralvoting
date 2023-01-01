@@ -30,8 +30,8 @@ function EthProvider({ children }) {
   useEffect(() => {
     const tryInit = async () => {
       try {
-        const artifact = require("../../contracts/SimpleStorage.json");
-        init(artifact);
+        //const artifact = require("../../contracts/SimpleStorage.json");
+        //init(artifact);
       } catch (err) {
         console.error(err);
       }
